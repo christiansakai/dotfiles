@@ -19,7 +19,7 @@ The files and reasonings:
     - `starship` is used to make my prompt better without installing `zsh` and `oh-my-zsh`
 
 - `.tmux.conf`
-    - this needs to be separated into smaller configurations because inside there is a fzf
+    - simple tmux configuration that plays well with vim
 
 - `.minvimrc`
     - a really minimal vim configuration file
