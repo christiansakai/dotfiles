@@ -1,0 +1,44 @@
+# A very minimal shell configuration compatible with sh, bash, zsh
+
+# Use starship prompt if it exists and the shell is bash or zsh
+if command -v starship >/dev/null 2>&1; then
+  if [ -n "$BASH_VERSION" ]; then
+    eval "$(starship init bash)"
+  elif [ -n "$ZSH_VERSION" ]; then
+    eval "$(starship init zsh)"
+  fi
+fi
+
+# Prevent crash by Ctrl-S Ctrl-Q when this shell is being accessed by ssh
+stty -ixon
+
+export PATH=$PATH:$HOME/dotfiles/bin
+export LANG=en_UTS.UTF-8
+
+# Use 256 color
+export TERM='xterm-256color'
+
+# Use color when using grep
+export GREP_OPTIONS='--color=auto'
+
+# Use color when using ls
+export CLICOLOR=1
+
+# Default text editor for git workflow
+export EDITOR='nvim -u ~/.vimrc'
+
+# Aliases
+alias vim='nvim -u ~/.vimrc'
+
+# Proxy settings here if needed
+export PROXY=http://some.proxy.com:80
+
+function proxy_on() {
+  export http_proxy=$PROXY
+  export https_proxy=$PROXY
+}
+
+function proxy_off() {
+  unset http_proxy=$PROXY
+  unset https_proxy=$PROXY
+} 

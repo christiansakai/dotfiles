@@ -1,0 +1,187 @@
+" ========== Plugin Installation ==========
+call plug#begin('~/.vim/plugged')
+" ***** Visual *****
+" One theme
+" Plug 'mhartington/oceanic-next'
+Plug 'rakr/vim-one'
+
+" Status line
+Plug 'itchyny/lightline.vim'
+
+
+" ***** General *****
+" Add sensible vim configuration
+Plug 'tpope/vim-sensible'
+
+" Manipulate surroundings in vim easily, e.g., {}, (), [], '', ""
+Plug 'tpope/vim-surround'
+
+" Smart repeat . command in vim, just take it for granted
+Plug 'tpope/vim-repeat'
+
+" Vim commenter
+Plug 'tpope/vim-commentary'
+
+
+" ***** Power Tools *****
+" Uses ctrl-p to quickly search files
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Seamlessly navigate between tmux and vim panes
+Plug 'christoomey/vim-tmux-navigator'
+call plug#end()
+
+
+" ========== Plugin Configuration ==========
+" ***** Visual *****
+" Enable syntax highlighting
+syntax on
+syntax enable
+filetype plugin indent on
+
+" Regexp syntax highlight
+set regexpengine=1
+
+" Render <TAB> character to equal 2 columns
+set tabstop=2
+
+" Set vim to show number
+set number
+
+" Highlight current line
+set cursorline
+
+" Don't show vim mode because Lightline already shows it
+set noshowmode
+
+" No idea what these are, all I know these makes this editor faster
+set noshowcmd
+set noruler
+
+" :Explore is using list style
+let g:netrw_liststyle=3
+
+" If the terminal support true colors use it
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+" Use One (dark) theme for overall
+colorscheme one
+
+" Lightline theme also uses One theme
+let g:lightline = { 'colorscheme': 'one' }
+
+
+" ***** General *****
+" No swap file
+set noswapfile
+
+" Tabs are spaces
+set expandtab
+
+" Number of tabs indentation in insert mode, when we actually hit <TAB>
+set softtabstop=2
+
+" How many indentations when using >> and <<
+set shiftwidth=2
+
+" Copy to system clipboard
+set clipboard^=unnamed,unnamedplus
+
+" Bind space as leader key
+let mapleader = "\<Space>"
+
+" Automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd=
+
+" Zoom a vim pane, C-w to rebalance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+" Per default, netrw leaves unmodified buffers open. This autocommand
+" deletes netrw's buffer once it's hidden (using ':q', for example)
+autocmd FileType netrw setl bufhidden=delete
+
+" Map in normal mode key 0 to go to the start of line at the start of the text
+nmap 0 ^
+
+" Bind ctrl-s to write to file
+nmap <C-s> :w<cr>
+
+" Bind Ctrl-n to file tree (the :Explore) toggle
+nmap <C-n> :e .<cr> 
+
+" Bind Ctrl-S and Enter in Insert mode to get out from insert mode
+imap <C-s> <esc>:w<CR>
+
+" Bind Ctrl-S and Enter in Visual mode to get out from visual mode
+xmap <C-s> <esc>:w<CR>
+
+" Make j and k movement in normal mode to travel like normal in texts that are
+" wrapped by vim, try travelling this long comment line and see why it is more
+" reasonable to map it like this
+nmap k gk
+nmap j gj
+
+" bind K to grep word under cursor
+" This will make K search for that word in current folder recursively
+" and display the result in a tiny window
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" Bind space-vr to edit .vimrc in another tab
+nmap <leader>vi :tabe ~/dotfiles/.vimrc<cr>
+
+" Bind space-so to source .vimrc
+nmap <leader>so :source ~/dotfiles/.vimrc<cr>
+
+" Bind space-rm to open readme.md
+nmap <leader>rm :tabe ~/dotfiles/README.md<cr>
+
+
+" if executable("ag")
+"   " Use the_silver_searcher if it exists 
+"   " Turn off CtrlP indexing because the_silver_searcher is fast enough
+"   let g:ctrlp_user_command = 'ag %s -l --hidden --ignore .git --nocolor -g ""'
+"   let g:ctrlp_use_caching = 0
+
+"   " Use the_silver_search for grep inside vim
+"   set grepprg=ag\ --nogroup\ --nocolor
+" else
+"   " Ignore version controls to avoid slowness
+"   let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+" endif
+
+" ***** Power Tools *****
+" *** CtrlP and ripgrep ***
+if executable('rg')
+  " Uses ripgrep if it exists for grep command inside vim
+  set grepprg=rg\ --color=never
+
+  " Uses ripgrep if it exists for CtrlP searching
+  " Turn off CtrlP indexing because ripgrep is fast enough
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+  let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+else
+  " Ignore specific files to avoid slowness
+  set wildignore+=*/.git/*,*/tmp/*,*.swp
+endif
+
+" *** Tmux ***
+" Disable tmux navigator when zooming the Vim pane
+let g:tmux_navigator_disable_when_zoomed = 1
+
+" Autosave when leaving from vim to tmux
+let g:tmux_navigator_save_on_switch = 1
+
+" Bug related to netrw on vim-tmux-navigator
+" https://github.com/christoomey/vim-tmux-navigator/issues/189#issuecomment-620485838
+augroup netrw_mapping
+  autocmd!
+  autocmd filetype netrw call NetrwMapping()
+augroup END
+
+function! NetrwMapping()
+  nnoremap <silent> <buffer> <c-l> :TmuxNavigateRight<CR>
+endfunction
