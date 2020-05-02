@@ -1,51 +1,52 @@
 " ========== Plugin Installation ==========
 call plug#begin('~/.vim/plugged')
-" ***** Visual *****
-" One theme
-" Plug 'mhartington/oceanic-next'
-Plug 'rakr/vim-one'
 
-" Status line
-Plug 'itchyny/lightline.vim'
+  " ***** Visual *****
+  " One theme
+  " Plug 'mhartington/oceanic-next'
+  Plug 'rakr/vim-one'
 
-
-" ***** General *****
-" Add sensible vim configuration
-Plug 'tpope/vim-sensible'
-
-" Manipulate surroundings in vim easily, e.g., {}, (), [], '', ""
-Plug 'tpope/vim-surround'
-
-" Smart repeat . command in vim, just take it for granted
-Plug 'tpope/vim-repeat'
-
-" Vim commenter
-Plug 'tpope/vim-commentary'
+  " Status line
+  Plug 'itchyny/lightline.vim'
 
 
-" ***** Power Tools *****
-" Uses ctrl-p to quickly search files
-Plug 'ctrlpvim/ctrlp.vim'
+  " ***** General *****
+  " Add sensible vim configuration
+  Plug 'tpope/vim-sensible'
 
-" Seamlessly navigate between tmux and vim panes
-Plug 'christoomey/vim-tmux-navigator'
+  " Manipulate surroundings in vim easily, e.g., {}, (), [], '', ""
+  Plug 'tpope/vim-surround'
+
+  " Smart repeat . command in vim, just take it for granted
+  Plug 'tpope/vim-repeat'
+
+  " Vim commenter
+  Plug 'tpope/vim-commentary'
 
 
-" ***** Extra *****
-" Make vim respect .editorconfig
-Plug 'editorconfig/editorconfig-vim'
+  " ***** Power Tools *****
+  " Uses ctrl-p to quickly search files
+  Plug 'ctrlpvim/ctrlp.vim'
 
-" Emmet.io plugin for quick XML tag coding
-Plug 'mattn/emmet-vim'
+  " Seamlessly navigate between tmux and vim panes
+  Plug 'christoomey/vim-tmux-navigator'
 
-" CSS color in vim
-Plug 'ap/vim-css-color'
 
-" All in one language pack
-Plug 'sheerun/vim-polyglot'
+  " ***** Extra *****
+  " Make vim respect .editorconfig
+  Plug 'editorconfig/editorconfig-vim'
 
-" Vim-wiki
-Plug 'vimwiki/vimwiki'
+  " Emmet.io plugin for quick XML tag coding
+  Plug 'mattn/emmet-vim'
+
+  " CSS color in vim
+  Plug 'ap/vim-css-color'
+
+  " All in one language pack
+  Plug 'sheerun/vim-polyglot'
+
+  " Vim-wiki
+  Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -156,19 +157,18 @@ nmap <leader>so :source ~/dotfiles/.vimrc<cr>
 " Bind space-rm to open readme.md
 nmap <leader>rm :tabe ~/dotfiles/README.md<cr>
 
+" Use TAB to complete when typing words, else inserts TABs as usual.
+" https://vim.fandom.com/wiki/Autocomplete_with_TAB_when_typing_words
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-N>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+set dictionary="/usr/dict/words"
 
-" if executable("ag")
-"   " Use the_silver_searcher if it exists 
-"   " Turn off CtrlP indexing because the_silver_searcher is fast enough
-"   let g:ctrlp_user_command = 'ag %s -l --hidden --ignore .git --nocolor -g ""'
-"   let g:ctrlp_use_caching = 0
-
-"   " Use the_silver_search for grep inside vim
-"   set grepprg=ag\ --nogroup\ --nocolor
-" else
-"   " Ignore version controls to avoid slowness
-"   let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-" endif
 
 " ***** Power Tools *****
 " *** CtrlP and ripgrep ***
@@ -206,6 +206,7 @@ endfunction
 
 
 " ***** Extra *****
-" Not compatible to old vi
+" *** Vim-Wiki ***
 " Necessary for vim-wiki
+" nvim does not need to be compatible with old vi
 set nocompatible

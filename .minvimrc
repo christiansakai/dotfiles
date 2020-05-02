@@ -138,19 +138,18 @@ nmap <leader>so :source ~/dotfiles/.vimrc<cr>
 " Bind space-rm to open readme.md
 nmap <leader>rm :tabe ~/dotfiles/README.md<cr>
 
+" Use TAB to complete when typing words, else inserts TABs as usual.
+" https://vim.fandom.com/wiki/Autocomplete_with_TAB_when_typing_words
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-N>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+set dictionary="/usr/dict/words"
 
-" if executable("ag")
-"   " Use the_silver_searcher if it exists 
-"   " Turn off CtrlP indexing because the_silver_searcher is fast enough
-"   let g:ctrlp_user_command = 'ag %s -l --hidden --ignore .git --nocolor -g ""'
-"   let g:ctrlp_use_caching = 0
-
-"   " Use the_silver_search for grep inside vim
-"   set grepprg=ag\ --nogroup\ --nocolor
-" else
-"   " Ignore version controls to avoid slowness
-"   let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-" endif
 
 " ***** Power Tools *****
 " *** CtrlP and ripgrep ***
