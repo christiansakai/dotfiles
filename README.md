@@ -9,6 +9,8 @@ The main ideas are:
 - If you must to add dependencies, consider whether it will work as compatible as possible (i.e., don't install plugins that only can use Vim8 or can only use Neovim)
 - Don't be fancy, KISS
 
+![looks](https://github.com/christiansakai/dotfiles/raw/master/looks.png "Looks")
+
 The files and reasonings:
 
 - `.shellrc`
