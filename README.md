@@ -237,8 +237,10 @@ Nested key means that the parent key is pressed/held first before the child key.
   * y: yank (copy) to system clipboard
 
 
+## Gotchas
+
+If you are using regular __Terminal.app__ or any terminal that does not support true color, when using the `vim` command __without__ inside `tmux`, it will give weird colors (see the `vim` rc files). This is because regular __Terminal.app__ does not support true colors, but `tmux` can give true colors. If you use __iTerm2__ this does not happen.
+
 ## Todo
 
 - Think of a way to avoid duplication on `.minvimrc` and `.vimrc`
-- Bug:
-  - Running the vim alias with or without tmux gives different color scheme
