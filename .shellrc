@@ -25,9 +25,12 @@ export GREP_OPTIONS='--color=auto'
 export CLICOLOR=1
 
 # Default text editor for git workflow
+# WARNING: don't do this with vim (see below)
 export EDITOR='nvim -u ~/.vimrc'
 
 # Aliases
+# WARNING: don't do this with vim (it will be buggy)
+# because vim automatically read from .vimrc
 alias vim='nvim -u ~/.vimrc'
 
 # Proxy settings here if needed
