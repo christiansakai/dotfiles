@@ -58,8 +58,9 @@ syntax on
 syntax enable
 filetype plugin indent on
 
-" Regexp syntax highlight
-set regexpengine=1
+" Disable regexp syntax highlight to avoid performance issues
+" in syntax highlighting large files
+set regexpengine=0
 
 " Render <TAB> character to equal 2 columns
 set tabstop=2

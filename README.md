@@ -97,7 +97,7 @@ The files and reasonings:
     Clone this repository to your `~` (which is your `$HOME`), and run these commands:
 
     ```sh
-    $ chmod +x ~/bin/tat
+    $ chmod +x ~/dotfiles/bin/tat
     $ ln -s ~/dotfiles/.shellrc .shellrc
     $ ln -s ~/dotfiles/.tmux.conf .tmux.conf
     $ ln -s ~/dotfiles/.minvimrc .vimrc
