@@ -76,6 +76,12 @@ The files and reasonings:
     ```sh
     $ brew install tmux
     ```
+
+    Install this utility so tmux can also yank to clipboard on Mac OSX
+
+    ```sh
+    $ brew install reattach-to-user-namespace
+    ```
 	
 6. Neovim
 
@@ -91,7 +97,7 @@ The files and reasonings:
     ```sh
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     ```
-	
+
 7. Activate
 
     Clone this repository to your `~` (which is your `$HOME`), and run these commands:
