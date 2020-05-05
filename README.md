@@ -243,9 +243,11 @@ Nested key means that the parent key is pressed/held first before the child key.
   * y: yank (copy) to system clipboard
 
 
-## Gotchas
+## Bugs
 
-If you are using regular __Terminal.app__ or any terminal that does not support true color, when using the `vim` command __without__ inside `tmux`, it will give weird colors (see the `vim` rc files). This is because regular __Terminal.app__ does not support true colors, but `tmux` can give true colors. If you use __iTerm2__ this does not happen.
+- If you are using regular __Terminal.app__ or any terminal that does not support true color, when using the `vim` command __without__ inside `tmux`, it will give weird colors (see the `vim` rc files). This is because regular __Terminal.app__ does not support true colors, but `tmux` can give true colors. If you use __iTerm2__ this does not happen.
+
+- Resizing pane up and down still does not work (but the left and right works)
 
 ## Todo
 
