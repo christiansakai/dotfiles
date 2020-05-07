@@ -13,7 +13,7 @@ fi
 stty -ixon
 
 export PATH=$PATH:$HOME/dotfiles/bin
-export LANG=en_UTS.UTF-8
+export LANG=en_US.UTF-8
 
 # Use 256 color
 export TERM='xterm-256color'
