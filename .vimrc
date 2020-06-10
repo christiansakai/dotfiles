@@ -211,3 +211,11 @@ endfunction
 " Necessary for vim-wiki
 " nvim does not need to be compatible with old vi
 set nocompatible
+
+" Set default path and syntax
+let g:vimwiki_list = [{
+  \'path': '~/dotfiles/vimwiki/',
+  \'syntax': 'markdown',
+  \'ext': '.md'
+\}]
+  
