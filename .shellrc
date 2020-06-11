@@ -12,7 +12,7 @@ fi
 # Prevent crash by Ctrl-S Ctrl-Q when this shell is being accessed by ssh
 stty -ixon
 
-export PATH=$PATH:$HOME/dotfiles/bin
+export PATH=$HOME/dotfiles/bin:$PATH
 export LANG=en_US.UTF-8
 
 # Use 256 color
