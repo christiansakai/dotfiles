@@ -43,3 +43,17 @@
 * Use OTR (off-the-record) messaging app with PFS (perfect forward secrecy)
 
 ## Ch 5 - Now You See Me, Now You Don't
+
+* US can charge you for erasing things on your computer (Sarbanes-Oxley Act of 2002)
+* Search engine provider can store your search history, what you search today might come back to haunt you tomorrow
+  * Turn off personalized search on your search engine provider (i.e., Google account)
+  * Use privacy focused search engine (i.e., DDG)
+* Avoid collecting those data such as browser history on the first place
+* Use plugin https everywhere on browser
+* Disable location tracking on your browser, or spoof it
+  * Use proxy with https
+  * But beware of free proxies, it can inject malware and can be done legally, read proxy EULA to avoid trap
+  * Use Tor browser
+* Be careful on syncing devices, it can sync in public computer as well
+  * Always sign out after use on public computer
+  * Setup different user account on family computer
