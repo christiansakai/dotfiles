@@ -1,5 +1,7 @@
 # The Art of Invisibility
 
+__Completed__: June 21st 2020
+
 ## Ch 1 - Your Password Can be Cracked
 
 * Provide clever answers on security questions
