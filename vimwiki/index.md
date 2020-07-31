@@ -29,3 +29,6 @@
 * Social media army bots 
 * Chord creator from melody
 * NoCRUDApp list
+* PDF reader with bookmark
+* Lottery enter winner
+* Musician play together in cluster less than 30ms

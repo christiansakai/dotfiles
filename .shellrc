@@ -33,6 +33,8 @@ export EDITOR='nvim -u ~/.vimrc'
 # because vim automatically read from .vimrc
 alias vim='nvim -u ~/.vimrc'
 
+alias ll='ls -lAhF'
+
 # Proxy settings here if needed
 export PROXY=http://some.proxy.com:80
 

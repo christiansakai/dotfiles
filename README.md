@@ -252,3 +252,6 @@ Nested key means that the parent key is pressed/held first before the child key.
 ## Todo
 
 - Think of a way to avoid duplication on `.minvimrc` and `.vimrc`
+- Useful Linux only package
+  - htop
+  - iftop
